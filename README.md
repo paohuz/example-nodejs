@@ -1,21 +1,42 @@
 # example-nodejs
 Just simple nodejs application
 
-## Installation ##
-npm install express
+# tree
+.
+├── Jenkinsfile
+├── README.md
+├── docker
+│   ├── hello1
+│   │   ├── Dockerfile
+│   │   └── hello-1.js
+│   ├── hello2
+│   │   ├── Dockerfile
+│   │   └── hello-2.js
+│   └── nginx
+│       ├── Dockerfile
+│       └── nginx.conf
+└── docker-compose.yml
 
-npm install redis
+# SCM 
+git clone https://github.com/pornpasok/example-nodejs.git
 
-## hello-1 ##
+# Build Docker Image and Deploy to development ENV
+cd example-nodejs/
 
-In case of hello-1 , it need to have redis server to keep session & timestamp
+docker-compose up --build -d
 
-export port=redis_port
+# Check Docker Status
+docker ps -a
 
-export host=redis_host
+# Scale App to 2 Containers
+docker-compose scale hello1=2 hello2=2
 
-node app/hello-1.js 
+# Check Hello1 App
+curl http://localhost/hello1
 
-## hello-2 ##
+# Check Hello2 App
+curl http://localhost/hello2
 
-node app/hello-2.js
+# Clean App
+docker-compose down -v
+
