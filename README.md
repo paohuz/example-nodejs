@@ -17,7 +17,8 @@ Just simple nodejs application
 │   └── nginx
 │       ├── Dockerfile
 │       └── nginx.conf
-└── docker-compose.yml
+├── docker-compose.yml
+└── k8s_deployment.sh
 ```
 
 # SCM 
