@@ -47,5 +47,6 @@ docker-compose down -v
 # Bonus :)
 # Deploy to k8s Cluster
 chmod +x k8s_deployment.sh
+
 ./k8s_deployment.sh
 
