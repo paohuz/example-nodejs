@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo 'Scale App'
                 sh '''
-                    docker-compose scale hello1=3 hello2=3
+                    docker-compose scale hello1=2 hello2=2
                 '''
             }
         }
