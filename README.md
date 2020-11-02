@@ -1,9 +1,8 @@
 # example-nodejs
 Just simple nodejs application
 
-- tree
-
 ```bash
+# tree
 .
 ├── Jenkinsfile
 ├── README.md
@@ -21,32 +20,36 @@ Just simple nodejs application
 └── k8s_deployment.sh
 ```
 
-- SCM 
+``` bash
+# SCM 
 git clone https://github.com/pornpasok/example-nodejs.git
 
-- Build Docker Image and Deploy to development ENV
+# Build Docker Image and Deploy to development ENV
 cd example-nodejs/
 
 docker-compose up --build -d
 
-- Check Docker Status
+# Check Docker Status
 docker ps -a
 
-- Scale App to 2 Containers
+# Scale App to 2 Containers
 docker-compose scale hello1=2 hello2=2
 
-- Check Hello1 App
+# Check Hello1 App
 curl http://localhost/hello1
 
-- Check Hello2 App
+# Check Hello2 App
 curl http://localhost/hello2
 
-- Clean App
+# Clean App
 docker-compose down -v
+```
 
 # Bonus :)
-- Deploy to k8s Cluster
+```bash
+# Deploy to k8s Cluster
 chmod +x k8s_deployment.sh
 
 ./k8s_deployment.sh
+```
 
