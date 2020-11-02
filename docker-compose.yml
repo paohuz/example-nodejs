@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  lb:
+    build: 
+      context: ./docker/nginx/
+      dockerfile: Dockerfile
+    container_name: lb
+    ports:
+      - "80:80"
+    links:
+      - hello1
+      - hello2
+    env_file: ./.env
+
+  hello1:
+    build: 
+      context: ./docker/hello1/
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 2
+    depends_on:
+      - redis
+    links:
+      - redis
+    env_file: ./.env
+
+  hello2:
+    build: 
+      context: ./docker/hello2/
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 2
+    depends_on:
+      - redis
+    links:
+      - redis
+    env_file: ./.env
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    env_file: ./.env
